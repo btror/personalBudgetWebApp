@@ -1,0 +1,114 @@
+#bodyContent {
+  background: #f3ffeb;
+  margin-left: 15px;
+}
+
+#navbar-first {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background: white;
+}
+
+#navbar-second {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background: white;
+}
+
+#home-container {
+    margin-top: -20px;
+    background: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 1px solid gray;
+}
+
+#home-container header {
+  font-size: 18pt;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#home-container p {
+  margin-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#banner {
+  background: #36ac4d;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+
+#banner #head-content {
+    text-align: center;
+}
+
+#banner #head-content img {
+    margin-top: 15px;
+    width: 200px;
+    height: 200px;
+}
+
+#banner #head-content header {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 26pt;
+}
+
+#banner #head-content p {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 14pt;
+    padding-bottom: 30px;
+}
+
+#loginBox {
+    border: 1px solid gray;
+}
+
+#charts {
+    background: white;
+    border: 1px solid gray;
+    margin-top: -20px;
+}
+
+#charts .row {
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#charts #chartContainer {
+    background: rgb(252, 252, 252);
+    height: 300px;
+    border: 1px solid gray;
+}
+
+
+#charts #chartContainer #userInfo header{
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 22pt;
+    margin-top: 45px;
+    text-align: center;
+}
+
+#charts #chartContainer #userInfo p{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 18pt;
+    text-align: center;
+}
+
+#inputBox {
+    margin-top: -48px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background: white;
+}
+
+#footer {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}

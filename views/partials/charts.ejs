@@ -1,0 +1,37 @@
+<div class="container" id="charts">
+  <br>
+  <div class="row" id="#topChart">
+    <div class="col-md-6">
+      <div id="chartContainer">
+        <div id="userInfo">
+          <header><%= name %>'s budget data</header>
+          <br>
+          <p>Current budget: <%= startBudget %></p>
+          <p>Amount spent: <%= expenseAmount %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div id="chartContainer">
+        <br>
+        <canvas id="polarChart"> </canvas>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="bottomChart">
+    <div class="col-md-6">
+      <div id="chartContainer">
+        <br>
+        <canvas id="pieChart"> </canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div id="chartContainer">
+        <br>
+        <canvas id="barChart"> </canvas>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

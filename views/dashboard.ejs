@@ -1,0 +1,97 @@
+<!--navigation menu-->
+<%- include('../views/partials/dashboardNavbar.ejs') %>
+
+<!--charts-->
+<%- include('../views/partials/dashboardBanner.ejs') %>
+
+<!--charts-->
+<%- include('../views/partials/charts.ejs') %>
+
+<div class="row mt-5">
+  <div class="col-md-12 m-auto">
+    <div class="container" id="inputBox">
+      <br />
+      <br />
+      <form action="/users/addBudgetData" method="POST">
+        <input name="email" value='<%= email %>' style="visibility: hidden;"></input>
+        <div class="form-group">
+          <label for="startBudget">Budget for the current month</label>
+          <input
+            type="number"
+            id="startBudget"
+            name="startBudget"
+            class="form-control"
+            placeholder="Enter new budget (optional)"
+          />
+        </div>
+        <hr style="margin-top: 50px; margin-bottom: 40px" />
+
+        <!--income data-->
+
+        <div class="form-group">
+          <label for="incomeAmount">Add income</label>
+          <div class="row">
+            <div class="col-md-6">
+              <input
+                type="text"
+                id="incomeAmount"
+                name="incomeAmount"
+                class="form-control"
+                placeholder="Enter name"
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="number"
+                id="incomeAmount"
+                name="incomeAmount"
+                class="form-control"
+                placeholder="Enter amount"
+              />
+            </div>
+          </div>
+          <div id="newIncome"></div>
+          <br>
+          <input type="button" class="btn btn-secondary" value="+" onclick="newIncome()"/>
+        </div>
+        <hr style="margin-top: 50px; margin-bottom: 40px" />
+
+        <!--expense data-->
+
+        <div class="form-group">
+          <label for="expenseAmount">Add expense</label>
+          <div class="row">
+            <div class="col-md-6">
+              <input
+                type="text"
+                id="expenseAmount"
+                name="expenseAmount"
+                class="form-control"
+                placeholder="Enter name"
+              />
+            </div>
+            <div class="col-md-6">
+              <input
+                type="number"
+                id="expenseAmount"
+                name="expenseAmount"
+                class="form-control"
+                placeholder="Enter amount"
+              />
+            </div>
+          </div>
+          <div id="newExpense"></div>
+          <br>
+          <input type="button" class="btn btn-secondary" value="+" onclick="newExpense()"/>
+        </div>
+        <hr style="margin-top: 50px; margin-bottom: 40px" />
+        <br />
+        <button type="submit" class="btn btn-primary"> Save budget data </button>
+        <br /><br /> <br />
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--footer-->
+<%- include('../views/partials/footer.ejs') %>
