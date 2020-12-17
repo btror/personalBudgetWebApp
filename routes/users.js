@@ -89,27 +89,38 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/addBudgetData", (req, res) => {
-  const { email, startBudget, expenseAmount, incomeAmount } = req.body;
+  const {
+    email,
+    startBudget,
+    expenseAmount,
+    incomeAmount,
+    expenseNames,
+    incomeNames,
+  } = req.body;
 
-  console.log("email: " + email);
-  console.log("startBudget: " + startBudget);
-  console.log("expenseAmount: " + expenseAmount);
-  console.log("incomeAmount: " + incomeAmount);
-
-  User.findOne({ email: email }, function(err, user) {
+  User.findOne({ email: email }, function (err, user) {
     user.startBudget = startBudget;
-    //user.expenseAmount = expenseAmount;
-    //user.incomeAmount = incomeAmount;
-    user.save(function(err) {
-      console.log(user)
-    })
-  } );
+    user.expenseAmount = expenseAmount;
+    user.incomeAmount = incomeAmount;
+    user.expenseNames = expenseNames;
+    user.incomeNames = incomeNames;
 
-  // User.findOne({email: email}).then((user) => {
-  //   console.log(user._id)
-  //   user.updateOne({email}, {startBudget: startBudget})
-  //   console.log(user)
-  // })
+    var total1 = 0;
+    for (i in incomeAmount) {
+      total1 += +incomeAmount[i];
+    }
+    user.totalIncome = total1;
+
+    var total2 = 0;
+    for (i in expenseAmount) {
+      total2 += +expenseAmount[i];
+    }
+    user.totalSpent = total2;
+
+    user.save(function (err) {
+      console.log(user);
+    });
+  });
 
   res.redirect("/dashboard");
 });

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/public/assets/styles.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/styles.css" />
     <link
       rel="stylesheet"
       href="https://bootswatch.com/4/journal/bootstrap.min.css"
@@ -11,12 +11,11 @@
     <title>personal budget app</title>
   </head>
   <body id="bodyContent">
-
     <div class="container" id="content-container"><%- body %></div>
 
     <!--footer-->
     <!-- <%- include('../views/partials/footer.ejs') %> -->
-    
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
       integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
@@ -27,95 +26,5 @@
       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
       crossorigin="anonymous"
     ></script>
-    <script
-      src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js'
-      integrity='sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg=='
-      crossorigin='anonymous'
-    ></script>
-    <script
-      src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'
-      integrity='sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=='
-      crossorigin='anonymous'
-    ></script>
-
-    <script>
-      var dataSource = {
-        datasets: [
-          {
-            data: [10, 20, 30],
-            backgroundColor: ["#00ff33", "#ff2200", "#ffe600"],
-            label: ['test']
-          },
-        ],
-        labels: ["Income", "Expenses", "Savings"],
-      };
-    
-      function createPieChart() {
-        var ctx = document.getElementById("pieChart").getContext("2d");
-        var myPieChart = new Chart(ctx, {
-          type: "pie",
-          data: dataSource,
-          options: {
-            legend: {
-              labels: {
-                fontColor: "black",
-              },
-            },
-          },
-        });
-      }
-    
-      createPieChart();
-
-      function createPolarChart() {
-        var ctx = document.getElementById("polarChart").getContext("2d");
-        var myPieChart = new Chart(ctx, {
-          type: "polarArea",
-          data: dataSource,
-          options: {
-            legend: {
-              labels: {
-                fontColor: "black",
-              },
-            },
-          },
-        });
-      }
-
-      createPolarChart();
-
-      function createBarChart() {
-        var ctx = document.getElementById("barChart").getContext("2d");
-        var myPieChart = new Chart(ctx, {
-          type: 'bar',
-          data: dataSource,
-          options: {
-            legend: {
-              labels: {
-                fontColor: "black",
-              },
-            },
-          },
-        });
-      }
-
-      createBarChart();
-
-      // adding input fields
-
-      function newExpense() {
-        var newElement = document.createElement('row')
-        newElement.innerHTML = '<br><label for="expenseAmount">Add expense</label> <div class="row"> <div class="col-md-6"> <input type="text" id="expenseAmount" name="expenseAmount" class="form-control" placeholder="Enter name" /> </div> <div class="col-md-6"> <input type="number" id="expenseAmount" name="expenseAmount" class="form-control" placeholder="Enter amount" /> </div> </div>';
-        document.getElementById('newExpense').appendChild(newElement);
-      }
-
-      function newIncome() {
-        var newElement = document.createElement('row')
-        newElement.innerHTML = '<br><label for="incomeAmount">Add income</label> <div class="row"> <div class="col-md-6"> <input type="text" id="incomeAmount" name="incomeAmount" class="form-control" placeholder="Enter name" /> </div> <div class="col-md-6"> <input type="number" id="incomeAmount" name="incomeAmount" class="form-control" placeholder="Enter amount" /> </div>';
-        document.getElementById('newIncome').appendChild(newElement);
-      }
-
-    </script>
-
   </body>
 </html>

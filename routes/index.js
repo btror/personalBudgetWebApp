@@ -19,7 +19,11 @@ router.get("/dashboard", ensureAuthenticated, (req, res) =>
       email: req.user.email,
       startBudget: req.user.startBudget,
       expenseAmount: req.user.expenseAmount,
-      incomeAmount: req.user.incomeAmount
+      incomeAmount: req.user.incomeAmount,
+      totalIncome: req.user.totalIncome,
+      totalSpent: req.user.totalSpent,
+      expenseNames: req.user.expenseNames,
+      incomeNames: req.user.incomeNames
   })
 );
 

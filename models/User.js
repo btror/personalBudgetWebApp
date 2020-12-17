@@ -21,10 +21,26 @@ const UserSchema = new mongoose.Schema({
         default: 0
     },
     expenseAmount: {
+        type: Array,
+        default: {}
+    },
+    incomeAmount: {
+        type: Array,
+        default: {}
+    },
+    expenseNames: {
+        type: Array,
+        default: {}
+    },
+    incomeNames: {
+        type: Array,
+        default: {}
+    },
+    totalIncome: {
         type: Number,
         default: 0
     },
-    incomeAmount: {
+    totalSpent: {
         type: Number,
         default: 0
     }

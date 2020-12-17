@@ -1,37 +1,195 @@
 <div class="container" id="charts">
-  <br>
+  <br />
   <div class="row" id="#topChart">
     <div class="col-md-6">
       <div id="chartContainer">
         <div id="userInfo">
           <header><%= name %>'s budget data</header>
-          <br>
-          <p>Current budget: <%= startBudget %></p>
-          <p>Amount spent: <%= expenseAmount %></p>
+          <br />
+          <p>Budget goal: <%= startBudget %></p>
+          <p>Total income: <%= totalIncome %></p>
+          <p>Total expenses: <%= totalSpent %></p>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div id="chartContainer">
-        <br>
+        <br />
         <canvas id="polarChart"> </canvas>
       </div>
     </div>
   </div>
-  <br>
+  <br />
   <div class="row" id="bottomChart">
     <div class="col-md-6">
       <div id="chartContainer">
-        <br>
+        <br />
         <canvas id="pieChart"> </canvas>
       </div>
     </div>
     <div class="col-md-6">
       <div id="chartContainer">
-        <br>
+        <br />
         <canvas id="barChart"> </canvas>
       </div>
     </div>
   </div>
-  <br>
+  <br />
 </div>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"
+  integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg=="
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+  integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+  crossorigin="anonymous"
+></script>
+
+<script>
+  // data source for comparing the budget goal, total income, and total spent
+  var budgetGoal = "<%= startBudget %>";
+  var totalIncome = "<%= totalIncome %>";
+  var totalSpent = "<%= totalSpent %>";
+
+  var smallDataSource = {
+    datasets: [
+      {
+        data: [budgetGoal, totalIncome, totalSpent],
+        backgroundColor: ["#4287f5", "#20c75d", "#ff1900"],
+        label: ["Total"],
+      },
+    ],
+    labels: ["Budget Goal", "Total income", "Total expenses"],
+  };
+
+  // data source for visualizing all user created components
+  var incomeItemCost = "<%= incomeAmount %>";
+  var expenseItemCost = "<%= expenseAmount %>";
+
+  var incomeItemNames = "<%= incomeNames %>";
+  var expenseItemNames = "<%= expenseNames %>";
+
+  var allIncomeCosts = incomeItemCost.split(",");
+  console.log(allIncomeCosts);
+
+  var allExpenseCosts = expenseItemCost.split(",");
+  console.log(allExpenseCosts);
+
+  var allCosts = allIncomeCosts.concat(allExpenseCosts);
+  console.log(allCosts);
+
+  var allIncomeNames = incomeItemNames.split(",");
+  console.log(allIncomeNames);
+
+  var allExpenseNames = expenseItemNames.split(",");
+  console.log(allExpenseNames);
+
+  var allNames = allIncomeNames.concat(allExpenseNames);
+  console.log(allNames);
+
+  // colors
+  function createBackgroundColors() {
+    var colorArray1 = [];
+    for (var i = 0; i < allIncomeNames.length; i++) {
+      colorArray1[i] = "#20c75d";
+    }
+
+    var colorArray2 = [];
+    for (var i = 0; i < allExpenseNames.length; i++) {
+      colorArray2[i] = "#ff1900";
+    }
+
+    var finalArray = colorArray1.concat(colorArray2);
+    return finalArray;
+  }
+
+  var backgroundColors = createBackgroundColors();
+  console.log(backgroundColors);
+
+  var largeDataSource = {
+    datasets: [
+      {
+        data: allCosts,
+        backgroundColor: backgroundColors,
+        label: ["All items"],
+      },
+    ],
+    labels: allNames,
+  };
+
+  // create charts
+
+  function createPieChart() {
+    var ctx = document.getElementById("pieChart").getContext("2d");
+    var myPieChart = new Chart(ctx, {
+      type: "pie",
+      data: largeDataSource,
+      options: {
+        legend: {
+          labels: {
+            fontColor: "black",
+          },
+        },
+      },
+    });
+  }
+  createPieChart();
+
+  function createPolarChart() {
+    var ctx = document.getElementById("polarChart").getContext("2d");
+    var myPieChart = new Chart(ctx, {
+      type: "polarArea",
+      data: smallDataSource,
+      options: {
+        legend: {
+          labels: {
+            fontColor: "black",
+          },
+        },
+      },
+    });
+  }
+  createPolarChart();
+
+  function createBarChart() {
+    var ctx = document.getElementById("barChart").getContext("2d");
+    var myPieChart = new Chart(ctx, {
+      type: "bar",
+      data: largeDataSource,
+      options: {
+        legend: {
+          labels: {
+            fontColor: "black",
+          },
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      },
+    });
+  }
+  createBarChart();
+
+  // adding input fields
+
+  function newExpense() {
+    var newElement = document.createElement("row");
+    newElement.innerHTML =
+      '<br><label for="expenseNames">Add expense</label> <div class="row"> <div class="col-md-6"> <input type="text" id="expenseNames" name="expenseNames" class="form-control" placeholder="Enter name" /> </div> <div class="col-md-6"> <input type="number" id="expenseAmount" name="expenseAmount" class="form-control" placeholder="Enter amount" /> </div> </div>';
+    document.getElementById("newExpense").appendChild(newElement);
+  }
+
+  function newIncome() {
+    var newElement = document.createElement("row");
+    newElement.innerHTML =
+      '<br><label for="incomeNames">Add income</label> <div class="row"> <div class="col-md-6"> <input type="text" id="incomeNames" name="incomeNames" class="form-control" placeholder="Enter name" /> </div> <div class="col-md-6"> <input type="number" id="incomeAmount" name="incomeAmount" class="form-control" placeholder="Enter amount" /> </div> </div>';
+    document.getElementById("newIncome").appendChild(newElement);
+  }
+</script>
