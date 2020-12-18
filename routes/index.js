@@ -11,6 +11,9 @@ router.get("/about", (req, res) => res.render("about"));
 // login Page
 router.get("/login", (req, res) => res.render("/users/login"));
 
+// confirmation
+router.get("/confirmation", (req, res) => res.render("confirmation"))
+
 // Dashboard
 router.get("/dashboard", ensureAuthenticated, (req, res) =>
   res.render("dashboard", {

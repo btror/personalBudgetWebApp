@@ -3,42 +3,37 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
-// user model
+// user
 const User = require("../models/User");
 const { db } = require("../models/User");
 
-// login page
+// login
 router.get("/login", (req, res) => res.render("login"));
 
-// register page
+// register
 router.get("/register", (req, res) => res.render("register"));
 
-// register handle
+// register
 router.post("/register", (req, res) => {
   const { name, email, password, password2 } = req.body;
   let errors = [];
-  // check required fields
+
   if (!name || !email || !password || !password2) {
     errors.push({ msg: "Fill in all required fields" });
+    res.status(400).send("Fill in the empty fields");
   }
   // check password matches
   if (password !== password2) {
     errors.push({ msg: "Passwords don't match" });
+    res.status(400).send("Passwords do not match");
   }
 
-  if (errors.length > 0) {
-    res.render("register", {
-      errors,
-      name,
-      email,
-      password,
-      password2,
-    });
-  } else {
-    // validation pass
+  if (errors.length === 0) {
+    // no errors detected
     User.findOne({ email: email }).then((user) => {
       if (user) {
         errors.push({ msg: "email taken" });
+        res.status(400);
         res.render("register", {
           errors,
           name,
@@ -47,26 +42,24 @@ router.post("/register", (req, res) => {
           password2,
         });
       } else {
-        //create a new user if one doesn't exist
+        //create user
         const newUser = new User({
           name,
           email,
           password,
         });
-        // hash the password
+        // hash
         bcrypt.genSalt(10, (err, salt) =>
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
-            // hash password
             newUser.password = hash;
-            // save the user
             newUser
               .save()
               .then((user) => {
-                req.flash("success_msg", "Your account has been registered");
                 res.redirect("/users/login");
+                res.status(200);
               })
-              .catch((err) => console.log(err));
+              .catch((err) => res.status(500).send("server not responding"));
           })
         );
       }
@@ -78,14 +71,19 @@ router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/users/login",
-    failureFlash: true,
+    isLoggedIn: true,
   })(req, res, next);
+  res.status(400);
+});
+
+router.post("/confirmation", (req, res) => {
+  res.redirect("/dashboard");
 });
 
 router.get("/logout", (req, res) => {
   req.logout();
-  req.flash("success_msg", "Logged out");
   res.redirect("/users/login");
+  res.status(200);
 });
 
 router.post("/addBudgetData", (req, res) => {
@@ -105,24 +103,11 @@ router.post("/addBudgetData", (req, res) => {
     user.expenseNames = expenseNames;
     user.incomeNames = incomeNames;
 
-    var total1 = 0;
-    for (i in incomeAmount) {
-      total1 += +incomeAmount[i];
-    }
-    user.totalIncome = total1;
-
-    var total2 = 0;
-    for (i in expenseAmount) {
-      total2 += +expenseAmount[i];
-    }
-    user.totalSpent = total2;
-
     user.save(function (err) {
       console.log(user);
     });
   });
-
-  res.redirect("/dashboard");
+  res.redirect("/confirmation");
 });
 
 module.exports = router;

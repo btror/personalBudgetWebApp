@@ -36,14 +36,6 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: {}
     },
-    totalIncome: {
-        type: Number,
-        default: 0
-    },
-    totalSpent: {
-        type: Number,
-        default: 0
-    }
 }, {_id: true})
 
 const User = mongoose.model('User', UserSchema)
