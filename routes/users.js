@@ -71,12 +71,11 @@ router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/users/login",
-    isLoggedIn: true,
   })(req, res, next);
   res.status(400);
 });
 
-router.post("/confirmation", (req, res) => {
+router.post("/confirmation", (req, res, next) => {
   res.redirect("/dashboard");
 });
 

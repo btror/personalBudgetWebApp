@@ -61,19 +61,31 @@
 
   var allExpenseCosts = expenseItemCost.split(",");
 
-  var allCosts = allIncomeCosts.concat(allExpenseCosts);
+  var budgetCost = [budgetGoal];
+
+  var holder1 = budgetCost.concat(allIncomeCosts);
+
+  var allCosts = holder1.concat(allExpenseCosts);
 
   var allIncomeNames = incomeItemNames.split(",");
 
   var allExpenseNames = expenseItemNames.split(",");
 
-  var allNames = allIncomeNames.concat(allExpenseNames);
+  var budgetName = ["budget"]
+
+  var holder = budgetName.concat(allIncomeNames);
+
+  var allNames = holder.concat(allExpenseNames);
 
   // colors
   function createBackgroundColors() {
     var colorArray1 = [];
-    for (var i = 0; i < allIncomeNames.length; i++) {
-      colorArray1[i] = "#20c75d";
+    for (var i = 0; i < allIncomeNames.length + 1; i++) {
+      if (i > 0) {
+        colorArray1[i] = "#20c75d";
+      } else {
+        colorArray1[i] = "#44aeeb"
+      }
     }
 
     var colorArray2 = [];
@@ -140,9 +152,7 @@
         data: largeDataSource,
         options: {
           legend: {
-            labels: {
-              fontColor: "black",
-            },
+            display: false
           },
           scales: {
             yAxes: [

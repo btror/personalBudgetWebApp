@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { ensureAuthenticated} = require("../config/auth");
+const { ensureAuthenticated } = require("../config/auth");
 
 // home Page
 router.get("/", (req, res) => res.render("home"));
@@ -12,21 +12,21 @@ router.get("/about", (req, res) => res.render("about"));
 router.get("/login", (req, res) => res.render("/users/login"));
 
 // confirmation
-router.get("/confirmation", (req, res) => res.render("confirmation"))
+router.get("/confirmation", (req, res) => res.render("confirmation"));
 
 // Dashboard
 router.get("/dashboard", ensureAuthenticated, (req, res) =>
   res.render("dashboard", {
-      name: req.user.name,
-      date: req.user.date,
-      email: req.user.email,
-      startBudget: req.user.startBudget,
-      expenseAmount: req.user.expenseAmount,
-      incomeAmount: req.user.incomeAmount,
-      totalIncome: req.user.totalIncome,
-      totalSpent: req.user.totalSpent,
-      expenseNames: req.user.expenseNames,
-      incomeNames: req.user.incomeNames
+    name: req.user.name,
+    date: req.user.date,
+    email: req.user.email,
+    startBudget: req.user.startBudget,
+    expenseAmount: req.user.expenseAmount,
+    incomeAmount: req.user.incomeAmount,
+    totalIncome: req.user.totalIncome,
+    totalSpent: req.user.totalSpent,
+    expenseNames: req.user.expenseNames,
+    incomeNames: req.user.incomeNames,
   })
 );
 
