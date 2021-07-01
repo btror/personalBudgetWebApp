@@ -1,4 +1,4 @@
-# personal-budget-final-v2
+# Personal Budget Management App
 
 A personal budget management application programmed using the Embedded JavaScript (EJS) template and a mongoose database.
 
