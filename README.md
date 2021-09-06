@@ -14,6 +14,32 @@ Click <a href="https://personal-budget-app-v2.herokuapp.com/">here</a> to visit 
 
 - Used Heroku to host the application. 
 
-## Images
+## Screenshots
 
-<img src="budge_pic.JPG" width="600" height="350">
+Home page - design
+
+<img src="images/image_1.JPG" width="600" height="350">
+
+About page - design
+
+<img src="images/image_2.JPG" width="600" height="350">
+
+Login page - users can login to an existing account or choose to signup
+
+<img src="images/image_3.JPG" width="600" height="350">
+
+Create account page - users can signup with a valid email address and password, data saved to database
+
+<img src="images/image_4.JPG" width="600" height="350">
+
+Dashboard page - loads saved budget data from database on login
+
+<img src="images/image_5.JPG" width="600" height="350">
+
+Enter budget data prompts
+
+<img src="images/image_6.JPG" width="600" height="350">
+
+Update dashboard page after submitting new data to the database
+
+<img src="images/image_7.JPG" width="600" height="350">
