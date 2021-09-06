@@ -1,5 +1,17 @@
 # Personal Budget Management App
 
-A personal budget management application programmed using the Embedded JavaScript (EJS) template and a mongoose database.
+A personal budget management web application. Users can create an account for free.
 
-<img src="budge_pic.JPG" width="800" height="450">
+Click <a href="https://personal-budget-app-v2.herokuapp.com/">here</a> to visit the website.
+
+## Tech stack 
+
+- The frontend was built using the EJS (Embedded JavaScript) library and bootstrap. 
+
+- The backend was built using NodeJS and the server is configured with the express backend framework.
+
+- Mongoose was used to build the database. 
+
+## Images
+
+<img src="budge_pic.JPG" width="600" height="350">
