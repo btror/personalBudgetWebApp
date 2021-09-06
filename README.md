@@ -12,6 +12,8 @@ Click <a href="https://personal-budget-app-v2.herokuapp.com/">here</a> to visit 
 
 - Mongoose was used to build the database. 
 
+- Used Heroku to host the application. 
+
 ## Images
 
 <img src="budge_pic.JPG" width="600" height="350">
