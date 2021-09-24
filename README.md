@@ -2,7 +2,9 @@
 
 A personal budget management web application. Users can create an account for free.
 
-Click <a href="https://personal-budget-app-v2.herokuapp.com/">here</a> to visit the website. (Heroku only gives half a month of free hosting, so if it doesn't load it's because I don't have any more free dynos)
+Click <a href="https://personal-budget-app-v2.herokuapp.com/">here</a> to visit the website. 
+
+(Heroku only gives half a month of free hosting, so if it doesn't load it's because I don't have any more free dynos)
 
 ## Tech stack 
 
