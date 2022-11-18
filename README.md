@@ -2,8 +2,6 @@
 
 A personal budget management web application. Users can create an account for free.
 
-(Heroku only gives half a month of free hosting, so if it doesn't load it's because I don't have any more free dynos)
-
 ## Tech stack 
 
 - The frontend was built using the EJS (Embedded JavaScript) library and bootstrap. 
